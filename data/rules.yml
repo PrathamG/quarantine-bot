@@ -1,0 +1,88 @@
+version: "3.1"
+
+rules:
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Give meditation tips whenever the user asks
+  steps:
+  - intent: meditate
+  - action: utter_meditate
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Activate Wordle form
+  steps:
+  - intent: wordle
+  - action: utter_wordle
+  - action: wordle_form
+  - active_loop: wordle_form
+
+- rule: Give joke from api
+  steps:
+  - intent: joke
+  - action: action_get_joke
+
+- rule: Submit Wordle form
+  condition:
+  - active_loop: wordle_form
+  steps:
+  - action: wordle_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_play_wordle
+
+- rule: Activate Trivia Init form
+  steps:
+  - intent: trivia
+  - action: trivia_form
+  - active_loop: trivia_form
+
+- rule: Submit Trivia Init form
+  condition:
+  - active_loop: trivia_form
+  steps:
+  - action: trivia_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_play_trivia
+
+- rule: Activate Trivia Answer form
+  steps:
+  - intent: trivia_answer
+  - action: trivia_answer_form
+  - active_loop: trivia_answer_form
+
+- rule: Submit Trivia Answer form
+  condition:
+  - active_loop: trivia_answer_form
+  steps:
+  - action: trivia_answer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_play_trivia
+
+- rule: Activate Journal form
+  steps:
+  - intent: journal
+  - action: utter_journal
+  - action: journal_form
+  - active_loop: journal_form
+
+- rule: Submit Journal form
+  condition:
+  - active_loop: journal_form
+  steps:
+  - action: journal_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_journal

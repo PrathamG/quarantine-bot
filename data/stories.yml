@@ -1,0 +1,112 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_stressed
+
+- story: sad path 4
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: action_get_joke
+  - action: utter_feedback
+
+- story: bored path 0
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: bored
+  - action: utter_bored
+
+- story: bored path 0
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: bored
+  - action: utter_bored
+  - intent: deny
+  - action: action_get_joke
+  - action: utter_feedback
+
+- story: bored path 1
+  steps:
+  - intent: bored
+  - action: utter_bored
+
+- story: stressed
+  steps:
+  - intent: stressed
+  - action: utter_stressed
+
+- story: welcome message
+  steps:
+  - intent: welcome
+  - action: utter_welcome_msg
+
+- story: joke path 06
+  steps:
+  - intent: joke
+  - action: action_get_joke
+  - intent: affirm
+  - action: utter_welcome
+
+- story: joke path 15
+  steps:
+  - intent: joke
+  - action: action_get_joke
+  - intent: deny
+  - action: utter_comeback 
+  - action: utter_new_joke
+  - intent: affirm
+  - action: action_get_joke
+
+- story: joke path 16
+  steps:
+  - intent: joke
+  - action: action_get_joke
+  - intent: deny
+  - action: utter_comeback 
+  - action: utter_new_joke
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: thanks reply
+  steps:
+  - intent: thanks
+  - action: utter_welcome

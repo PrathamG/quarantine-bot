@@ -1,0 +1,8 @@
+{
+  "rule_only_slots": [],
+  "rule_only_loops": [
+    "trivia_answer_form",
+    "trivia_form",
+    "wordle_form"
+  ]
+}

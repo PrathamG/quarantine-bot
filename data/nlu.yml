@@ -1,0 +1,168 @@
+version: "3.1"
+nlu:
+- intent: bored
+  examples: |
+    - bored
+    - I am bored
+    - I have nothing to do
+    - I want to play something
+    - I want to do something
+    - Let's do something
+    - Can we play something
+- intent: greet
+  examples: |
+    - what's up
+    - ssup
+    - whatsup
+    - yo
+    - yoo
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: meditate
+  examples: |
+    - meditate
+    - I want to meditate
+    - Meditation
+    - I want to do meditation
+    - I want to practice meditation
+    - I want to be still
+- intent: stressed
+  examples: |
+    - stress
+    - stressed
+    - I am stressed
+    - I feel stressed
+    - worried
+    - anxiety
+    - I feel anxious
+    - I don't feel well
+    - I am not well
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: thanks
+  examples: |
+    - Thanks
+    - thank you
+    - thx
+    - nice
+    - good bot
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - that was bad
+    - not funny
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - I am good
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+    - i am not good
+- intent: wordle
+  examples: |
+    - wordle
+    - play wordle
+    - I want to play wordle
+    - I want to play word game
+    - It's wordle time
+    - wordle time
+    - practice wordle
+- intent: trivia
+  examples: |
+    - trivia
+    - play trivia
+    - i want to do trivia
+    - quiz
+    - Play a quiz
+    - Play trivia game
+    - quiz game
+- intent: welcome
+  examples: |
+    - welcome
+    - /welcome
+    - welcome message
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: journal
+  examples: |
+    - I want to journal
+    - Journaling
+    - journal
+    - write in my journal
+    - i want to write
+    - i want to vent
+    - vent
+    - rant
+- intent: joke
+  examples: |
+    - Tell me a joke
+    - tell me something funny
+    - make me laugh
+    - joke
+    - funny

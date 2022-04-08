@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        !(function () {
+          let e = document.createElement("script"),
+            t = document.head || document.getElementsByTagName("head")[0];
+          (e.src = "https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.js"),
+            (e.async = !0),
+            (e.onload = () => {
+              window.WebChat.default(
+                {
+                  socketUrl: "http://localhost:5005",
+                  title:"BoBo",
+                  subtitle:"online",
+                  initPayload: "/welcome"
+                  // add other props here
+                },
+                null
+              );
+            }),
+            t.insertBefore(e, t.firstChild);
+        })();
+      </script>
+    <div id="rasa-chat-widget"></div>
+</html>

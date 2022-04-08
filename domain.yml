@@ -1,0 +1,254 @@
+version: '3.1'
+intents:
+- affirm
+- bored
+- bot_challenge
+- deny
+- goodbye
+- greet
+- journal
+- mood_great
+- mood_unhappy
+- trivia
+- wordle
+- thanks
+- stressed
+- meditate
+- welcome
+- joke
+
+slots:
+  guess_word:
+    type: text
+    initial_value: null
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: wordle_form
+  game_word:
+    type: text
+    initial_value: null
+    influence_conversation: false
+    mappings:
+    - type: custom
+  count:
+    type: float
+    initial_value: 0
+    influence_conversation: false
+    mappings:
+    - type: custom
+  trivia_correct:
+    type: text
+    initial_value: null
+    influence_conversation: false
+    mappings:
+    - type: custom
+  trivia_incorrect_1:
+    type: text
+    initial_value: null
+    influence_conversation: false
+    mappings:
+    - type: custom
+  trivia_incorrect_2:
+    type: text
+    initial_value: null
+    influence_conversation: false
+    mappings:
+    - type: custom
+  trivia_incorrect_3:
+    type: text
+    initial_value: null
+    influence_conversation: false
+    mappings:
+    - type: custom
+  trivia_count:
+    type: float
+    initial_value: 0
+    influence_conversation: false
+    mappings:
+    - type: custom
+  trivia_category:
+    type: categorical
+    values:
+    - gk
+    - movies
+    - sports
+    - science
+    - geography
+    initial_value: null
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: trivia_form
+        requested_slot: trivia_category
+  trivia_difficulty:
+    type: categorical
+    values:
+    - easy
+    - medium
+    - hard
+    initial_value: null
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: trivia_form
+        requested_slot: trivia_difficulty
+  trivia_score:
+    type: float
+    initial_value: 0
+    influence_conversation: false
+    mappings:
+    - type: custom
+  trivia_answer:
+    type: text
+    initial_value: null
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: trivia_answer_form
+        requested_slot: trivia_answer
+  journal_type:
+    type: categorical
+    values:
+    - jrnl_gratitude
+    - jrnl_daily
+    - jrnl_goal
+    - jrnl_soc
+    initial_value: null
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: journal_form
+        requested_slot: journal_type
+forms:
+  wordle_form:
+    required_slots:
+    - guess_word
+  trivia_form:
+    required_slots:
+    - trivia_category
+    - trivia_difficulty
+  trivia_answer_form:
+    required_slots:
+    - trivia_answer
+  journal_form:
+    required_slots:
+    - journal_type
+responses:
+  utter_bored:
+  - text: Bored of being bored because being bored is boring?! 🥱😦 Let's play something!
+    buttons:
+    - title: I want to play WORDLE
+      payload: wordle
+    - title: I want to play Trivia
+      payload: trivia
+  - text: A healthy body needs a healthy mind! Let's play a fun game 💪🧠🎈
+    buttons:
+    - title: I want to play WORDLE
+      payload: wordle
+    - title: I want to play Trivia
+      payload: trivia
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_feedback:
+  - text: Did you like that?
+  utter_comeback:
+  - text: "I'm sorry 😓"
+  - text: "Don't get mad at me just because you don't get the joke 😢"
+  - text: "It takes a not-funny to know a not-funny 👍"
+  utter_new_joke:
+  - text: "Would you like to hear another?"
+  utter_welcome_msg:
+  - text: |
+          Hi, I'm BoBo 🐧! I'm here to help you relax and enjoy your quarantine 😄
+          Feel free to speak with me whenever you feel like! You can try starting with the following prompts:
+          - I'm very bored
+          - I feel very stressed
+          - Tell me something funny
+  utter_welcome:
+  - text: You're welcome! 😊
+  utter_journal:
+  - text: 📗🖋️🐧✨ Journaling is a very effective form of self-expression which can help us manage our stress, improve our mood, and track our growth. All you need is a pen and some paper!
+  utter_ask_journal_form_journal_type:
+  - text: "Once you're ready, select one of the prompts below and get more details:"
+    buttons:
+    - title: 'Gratitude Journal: Reflect on things and events that you feel grateful for right now'
+      payload: jrnl_gratitude
+    - title: 'Daily Journaling: Record your thoughts and actions for the day'
+      payload: jrnl_daily
+    - title: 'Goal-tracking Journaling: Reflect on your goals and track their progress'
+      payload: jrnl_goal
+    - title: 'Stream-of-consciousness Journaling: Capture your thoughts and feelings as they are passing through your mind'
+      payload: jrnl_soc
+  utter_goodbye:
+  - text: Bye
+  utter_stressed:
+  - text: |
+          It is normal to sometimes feel worried and overwhelmed during quarantine. However, there are certain activities we can do to improve our mood! ✌️😌⚡🧠
+          Pick one of the activities from below:
+    buttons:
+    - title: '🧘 Meditation: Meditation is an effective tool to reach emotional stability and mental clarity'
+      payload: meditate
+    - title: '🖋️ Journaling: Journaling can help us better understand our experiences, goals, problems and emotions'
+      payload: journal
+
+  utter_meditate:
+  - text: |
+        Mindfulness meditation is an effective technique to reduce stress, improve focus, and reach a mentally clear and enotionally stable state. Here are some basic instructions to help you get started --
+          1. Take a seat in a calm and quiet environment. 😌
+          2. Set a time limit. If this is your first time, you can start with a shorter time limit such as 5 or 10 minutes. ⌚
+          3. Feel your breath. Feel your body physically inhale and exhale. 🌬️
+          4. Your mind will inevitably lose attention from your breath. When you notice your mind wandering, do not feel guilty or obsess about what you were thinking. Simply return your attention to your breathing.
+          5. When you are ready to stop, gently lift your eyes. Take a moment to notice your environment, thoughts, emotions and physical sensations
+  utter_wordle:
+  - text: |
+       It's WORDLE time! You have 6 attempts to find the WORDLE
+       _ : The letter is not present in the word 
+       ^ : The letter is present in the word but at a different spot 
+       * : The letter is present in the word and is in the correct spot 
+  utter_ask_wordle_form_guess_word:
+  - text: Please enter your guess
+  utter_ask_trivia_form_trivia_category:
+  - text: Please select a Trivia category
+    buttons:
+    - title: General Knowledge
+      payload: gk
+    - title: Movies
+      payload: movies
+    - title: Sports
+      payload: sports
+    - title: Science
+      payload: science
+    - title: Geography
+      payload: geography
+  utter_ask_trivia_form_trivia_difficulty:
+  - text: Please select a difficulty
+    buttons:
+    - title: Easy
+      payload: easy
+    - title: Medium
+      payload: medium
+    - title: Hard
+      payload: hard
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions:
+- action_journal
+- action_play_trivia
+- action_play_wordle
+- action_get_joke
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
